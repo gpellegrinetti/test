@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Job
+metadata:
+  name: pippo
+spec:
+  parallelism: 1    
+  completions: 1    
+  template:         
+    metadata:
+      name: pippo
+    spec:
+      containers:
+      - name: pippo
+        image: python
+      ports:
+        - containerPort: 8080
+          name: pippo
+      volumeMounts:
+        - name: pluto-storage
+          mountPath: /storage_OPEN/docker
+  volumes:
+    - name: pluto-storage
